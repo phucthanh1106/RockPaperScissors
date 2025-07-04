@@ -34,21 +34,20 @@ function playRound(humanChoice, computerChoice) {
   const resultDiv = document.querySelector("div#result");
   resultDiv.textContent = "You selected " + humanChoice + " and computer selected " + computerChoice;
 
+  const scoreDiv = document.querySelector("div#score");
+
   if (humanChoice == computerChoice) {
-    return "It's a tie!"
+    humanScore += 0;
   } else if ((humanChoice == hand[0] && computerChoice == hand[2]) || (humanChoice == hand[1] && computerChoice == hand[0]) || (humanChoice == hand[2] && compterChoice == hand[1])) {
     humanScore++;
-    return `You win! ${humanChoice} beats ${computerChoice}`;
   } else {
     computerScore++;
-    return `You lose! ${computerChoice} beats ${humanChoice}`
   }
+
+  scoreDiv.textContent = "Your score is " + humanScore + " and the computer's score is " + computerScore;
 }
 
 function displayScore() {
-  const scoreDiv = document.querySelector("div#score");
-  scoreDiv.textContent = "Your score is " + humanScore + " and the computer's score is " + computerScore;
-
   const winnerDiv = document.querySelector("div#winner");
   winnerDiv.textContent = "";
 
